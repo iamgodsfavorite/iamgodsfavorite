@@ -1,0 +1,158 @@
+# iamgodsfavorite.github.io
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>iamgodsfavorite</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Pinyon Script', cursive;
+      background-color: #FAFAFA;
+      color: #FFB6C1;
+    }
+    header {
+      background-color: #FAFAFA;
+      color: #808080;
+      text-align: center;
+      padding: 1em;
+      border: 2px solid #FFB6C1;
+    }
+    nav {
+      text-align: center;
+      background-color: #FAFAFA;
+      border-bottom: 2px solid #FFB6C1;
+    }
+    nav a {
+      padding: 14px 20px;
+      display: inline-block;
+      color: #FFB6C1;
+      text-decoration: none;
+    }
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+    }
+    .product {
+      border: 2px solid #FFB6C1;
+      padding: 16px;
+      text-align: center;
+      margin: 16px;
+      float: left;
+      width: calc(33.333% - 32px);
+    }
+    .product img {
+      max-width: 100%;
+    }
+    .product h3, .product p {
+      margin-top: 0;
+      color: #808080;
+    }
+    .product button {
+      background-color: #FAFAFA;
+      color: #FFB6C1;
+      border: 2px solid #FFB6C1;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+    .product button:hover {
+      background-color: #FFB6C1;
+      color: #FAFAFA;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.8);
+      z-index: 1;
+    }
+    .modal-content {
+      margin: 15% auto;
+      padding: 20px;
+      background-color: #fff;
+      width: 30%;
+    }
+    /* Dropdown Menu */
+    .dropdown {
+      display: inline-block;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #FAFAFA;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+    .dropdown-content a {
+      color: #FFB6C1;
+      padding: 12px 16px;
+      display: block;
+    }
+    .dropdown-content a:hover {
+      background-color: #FFB6C1;
+      color: #FAFAFA;
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>iamgodsfavorite</h1>
+  </header>
+  <nav>
+    <a href="home.html" id="homeBtn">Home</a>
+    <div class="dropdown">
+      <a href="shop.html" id="shopBtn">Shop</a>
+      <div class="dropdown-content">
+        <a href="shirts.html">Shirts</a>
+        <a href="pants.html">Pants</a>
+      </div>
+    </div>
+    <a href="about.html" id="aboutBtn">About</a>
+    <a href="contact.html" id="contactBtn">Contact</a>
+  </nav>
+  <div class="container">
+    <div class="product">
+	<img src="shirt1.jpg" alt="Shirt 1">
+      <h3><img src="bunnies.png" alt="Bunny" style="width: 1000px; vertical-align: middle;"> Bunny Princessa</h3>
+      <p>$25.00</p>
+      <button>Add to Cart</button>
+    </div>
+  </div>
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <p>Item added to cart!</p>
+    </div>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const buttons = document.querySelectorAll('.product button');
+      const modal = document.getElementById('myModal');
+      
+      buttons.forEach(button => {
+        button.addEventListener('click', function() {
+          modal.style.display = 'block';
+          setTimeout(() => {
+            modal.style.display = 'none';
+          }, 2000);
+        });
+      });
+      
+      // Add active class to clicked navigation button
+      const navButtons = document.querySelectorAll('nav a');
+      navButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          navButtons.forEach(btn => btn.classList.remove('active'));
+          this.classList.add('active');
+        });
+      });
+    });
+  </script>
+</body>
+</html>
